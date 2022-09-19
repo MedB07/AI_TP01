@@ -5,8 +5,10 @@ class Effecteur():
         self.c = 0
     def generate_aspirateur(self,a):
         E.map[a.Xasp][a.Yasp][0]=1
+
     def delete_aspirateur(self,a):
         E.map[a.Xasp][a.Yasp][0]=0
+
     def moveright(self):
         if a.Yasp!=4:
             self.delete_aspirateur(a)
@@ -34,8 +36,8 @@ if __name__ == "__main__":
     a = ASP.aspirateur()
     E = environement()
     e.generate_aspirateur(a)
-    E.generate_Bijoux(1,1)
-    E.generate_Dirty(1,4)
+    E.generate_Bijoux()
+    E.generate_Dirty()
     E.affichage()
     e.moveright()
     E.affichage()

@@ -1,15 +1,28 @@
 import random
+from tkinter import *
 class environement:
     def __init__(self):
         self.map = [[[0,0,0] for i in range(5)] for i in range(5)]
-    def generate_Dirty(self,x,y):
+
+
+    def generate_Dirty(self):
+        x = random.randint(0,4)
+        y= random.randint(0,4)
         self.map[x][y][1] = 1
-    def delete_Dirty(self,x,y):
+
+    def delete_Dirty(self):
+        x = random.randint(0,4)
+        y= random.randint(0,4)
         self.map[x][y][1]=0
-    def generate_Bijoux(self,x,y):
+    def generate_Bijoux(self):
+        x = random.randint(0,4)
+        y= random.randint(0,4)
         self.map[x][y][2]=1
-    def delete_Bijoux(self,x,y):
+    def delete_Bijoux(self):
+        x = random.randint(0,4)
+        y= random.randint(0,4)
         self.map[x][y][2] = 0
+
     def affichage(self):
         print(" ###############################")
         for L in self.map:
@@ -31,16 +44,17 @@ class environement:
             print("")
         print(" ###############################")
 
+
+
+
 if __name__ == "__main__":
-    x = random.randint(0,4)
-    y = random.randint(0,4)
-    x1 = random.randint(0,4)
-    y1 = random.randint(0,4)
+
     e = environement()
-    #e.affichage()
-    e.generate_Bijoux(x,y)
-    #e.generate_Bijoux(,2)
-    e.generate_Dirty(x1,y1)
-    
+    e.generate_Bijoux()
+    e.generate_Dirty()
+    e.generate_Bijoux()
+    e.generate_Dirty()
+    e.generate_Bijoux()
+    e.generate_Dirty()
     e.affichage()
 
