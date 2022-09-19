@@ -1,5 +1,7 @@
 from tkinter import *
-
+#from Environement import *
+from Effecteur import *
+#from ASP import *
 
 c = 100                          # Longueur d'un côté d'une case
 n = 5                           # Nombre de cases par ligne et par colonne
@@ -23,9 +25,28 @@ photo_pouss = PhotoImage(file='Image/poussiere.png')
 photo_bijoux = PhotoImage(file='Image/bijoux.png')
 photo_aspi = PhotoImage(file='Image/aspirateur.png')
 
-dessin.create_image(20+200,20+200,anchor=NW,image=photo_pouss)
+
+env = environement(dessin)
+a = ASP.aspirateur()
+e = Effecteur(env,a,dessin)
+e.generate_aspirateur(photo_aspi)
+
+
+env.generate_Dirty(photo_pouss)
+a = env.generate_Bijoux(photo_bijoux)
+dessin.delete(a)
+
+
+
+"""
+a = dessin.create_image(20+200,20+200,anchor=NW,image=photo_pouss)
+dessin.delete(a) #Deletes the rectangle
 dessin.create_image(20+200,20+400,anchor=NW,image=photo_bijoux)
 dessin.create_image(20,20,anchor=NW,image=photo_aspi)
+
+"""
+
+
 
 fen.mainloop()                  # Boucle d'attente des événements
 

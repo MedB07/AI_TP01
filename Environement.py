@@ -1,28 +1,30 @@
 import random
 from tkinter import *
 class environement:
-    def __init__(self):
+    def __init__(self,dessin):
         self.map = [[[0,0,0] for i in range(5)] for i in range(5)]
+        self.dessin=dessin
 
-
-    def generate_Dirty(self):
+    def generate_Dirty(self,img):
         x = random.randint(0,4)
         y= random.randint(0,4)
         self.map[x][y][1] = 1
+        dirty = self.dessin.create_image(20+100*x,20+100*y,anchor=NW,image=img)
+        return dirty
 
-    def delete_Dirty(self):
-        x = random.randint(0,4)
-        y= random.randint(0,4)
+    def delete_Dirty(self,x,y,img):
         self.map[x][y][1]=0
-    def generate_Bijoux(self):
+        self.dessin.delete(self.dessin.create_image(20+100*x,20+100*y,anchor=NW,image=img))
+
+    def generate_Bijoux(self,img):
         x = random.randint(0,4)
         y= random.randint(0,4)
         self.map[x][y][2]=1
-    def delete_Bijoux(self):
-        x = random.randint(0,4)
-        y= random.randint(0,4)
+        bijoux = self.dessin.create_image(20+100*x,20+100*y,anchor=NW,image=img)
+        return bijoux
+    def delete_Bijoux(self,x,y,img):
         self.map[x][y][2] = 0
-
+        self.dessin.delete(self.dessin.create_image(20+100*x,20+100*y,anchor=NW,image=img))
     def affichage(self):
         print(" ###############################")
         for L in self.map:
@@ -46,7 +48,7 @@ class environement:
 
 
 
-
+"""
 if __name__ == "__main__":
 
     e = environement()
@@ -57,4 +59,4 @@ if __name__ == "__main__":
     e.generate_Bijoux()
     e.generate_Dirty()
     e.affichage()
-
+"""
