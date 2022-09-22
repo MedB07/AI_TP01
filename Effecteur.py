@@ -8,11 +8,11 @@ class Effecteur():
         self.dessin = dessin
     def generate_aspirateur(self,img):
         self.E.map[self.a.Xasp][self.a.Yasp][0]=1
-        asp = self.dessin.create_image(20+100*self.a.Xasp,20+100*self.a.Yasp,anchor=NW,image=img)
+        asp = self.dessin.create_image(20+100*self.a.Yasp,20+100*self.a.Xasp,anchor=NW,image=img)
         return asp
 """
     def delete_aspirateur(self,a):
-        self.E.map[self.a.Xasp][self.a.Yasp][0]=0
+        self.E.map[self.a.Yasp][self.a.Xasp][0]=0
 
     def moveright(self):
         if self.a.Yasp!=4:

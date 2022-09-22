@@ -31,7 +31,7 @@ photo_aspi = PhotoImage(file='Image/aspirateur.png')
 
 
 env = environement(dessin)
-D = ASP.aspirateur(Effecteur)
+D = ASP.aspirateur(Effecteur,env)
 e = Effecteur(env,D,dessin)
 e.generate_aspirateur(photo_aspi)
 
@@ -40,10 +40,14 @@ e.generate_aspirateur(photo_aspi)
 env.generate_Dirty(photo_pouss)
 a = env.generate_Bijoux(photo_bijoux)
 dessin.delete(D)
-
+D.nonInforme()
+print(env.map)
 env.affichage()
 c = capteur()
 R = c.capteurMap(env)
+
+D.moveNotInformed(R[0])
+print(D.BDI)
 
 
 """
