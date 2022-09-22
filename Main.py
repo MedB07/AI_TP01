@@ -1,6 +1,8 @@
 from tkinter import *
 #from Environement import *
 from Effecteur import *
+from capteur import *
+from ASP import *
 #from ASP import *
 
 c = 100                          # Longueur d'un côté d'une case
@@ -26,16 +28,22 @@ photo_bijoux = PhotoImage(file='Image/bijoux.png')
 photo_aspi = PhotoImage(file='Image/aspirateur.png')
 
 
+
+
 env = environement(dessin)
-a = ASP.aspirateur()
-e = Effecteur(env,a,dessin)
+D = ASP.aspirateur(Effecteur)
+e = Effecteur(env,D,dessin)
 e.generate_aspirateur(photo_aspi)
+
 
 
 env.generate_Dirty(photo_pouss)
 a = env.generate_Bijoux(photo_bijoux)
-dessin.delete(a)
+dessin.delete(D)
 
+env.affichage()
+c = capteur()
+R = c.capteurMap(env)
 
 
 """
@@ -48,7 +56,7 @@ dessin.create_image(20,20,anchor=NW,image=photo_aspi)
 
 
 
-fen.mainloop()                  # Boucle d'attente des événements
+#fen.mainloop()                  # Boucle d'attente des événements
 
 
 
