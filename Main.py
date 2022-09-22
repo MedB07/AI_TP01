@@ -31,7 +31,8 @@ photo_aspi = PhotoImage(file='Image/aspirateur.png')
 
 
 env = environement(dessin)
-D = ASP.aspirateur(Effecteur,env)
+f = File()
+D = ASP.aspirateur(Effecteur,env,f)
 e = Effecteur(env,D,dessin)
 e.generate_aspirateur(photo_aspi)
 

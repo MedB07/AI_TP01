@@ -1,13 +1,15 @@
 from capteur import *
 from Environement import *
+from File import *
 
 class aspirateur:
-    def __init__ (self,Effecteur,environement):
+    def __init__ (self,Effecteur,environement,File):
         self.autonomie = 100
         self.score = 0
         self.Xasp = 3
         self.Yasp = 3
         self.environement = environement
+        self.File =File
         self.BDI = [] # liste du chemin a faire
         self.positionDirty = []
         self.positionBijoux = []
@@ -20,34 +22,33 @@ class aspirateur:
     #Partie Non Informé
     def nonInforme(self):
         tableau = self.environement.map   #tableau eq grid
-        file = []
         position = [self.Xasp,self.Yasp]
         # il faut remettre les parents des cases à leurs états initiaux ([-1,-1])
         for i in range(5):
             for j in range(5):
                 self.environement.map[i][j][3] = [-1,-1]
 
-        file.append(position)
-        while (len(file) != 0):
-            x = file[0][0]
-            y = file[0][1]
+        self.File.addFile(position)
+        while (self.File.tailleFile()!= 0):
+            x = self.File.file[0][0]
+            y = self.File.file[0][1]
             if (tableau[x][y][1] == 1):
                 return [x,y]
             if (tableau[x][y][2] == 1):
                 return [x,y]
             if (x!=0 and tableau[x-1][y][3]==[-1,-1]):
                 tableau[x-1][y][3] = [x,y]
-                file.append([x-1,y])
+                self.File.addFile([x-1,y])
             if (x!=4 and tableau[x+1][y][3]==[-1,-1]):
                 tableau[x+1][y][3] = [x,y]
-                file.append([x+1,y])
+                self.File.addFile([x+1,y])
             if (y!=0 and tableau[x][y-1][3]==[-1,-1]):
                 tableau[x][y-1][3] = [x,y]
-                file.append([x,y-1])
+                self.File.addFile([x,y-1])
             if (y!=4 and tableau[x][y+1][3]==[-1,-1]):
                 tableau[x][y+1][3] = [x,y]
-                file.append([x,y+1])
-            file.remove([x,y])
+                self.File.addFile([x,y+1])
+            self.File.removeFile([x,y])
 
     def moveNotInformed(self, captMap):
         tableau = self.environement.map   #tableau eq grid
