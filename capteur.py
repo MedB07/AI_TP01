@@ -10,4 +10,4 @@ class capteur():
                     Position_Dirty.append([i,j])
                 if(Environement.map[i][j][2]==1):
                     Position_Bijoux.append([i,j])
-        return Position_Dirty
+        return Position_Dirty+Position_Bijoux

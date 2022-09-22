@@ -50,7 +50,30 @@ class aspirateur:
                 self.File.addFile([x,y+1])
             self.File.removeFile([x,y])
 
+    # def moveNotInformed(self, listCapteur):
+    #     tableau = self.environement.map   #tableau eq grid
+    #     chemin = []
+    #     position = [self.Xasp,self.Yasp]
+    #     m = 10
+    #     for captMap in listCapteur:
+    #         i=10
+    #         while(captMap != position and i != 0):
+    #             i -= 1
+    #             chemin.append(captMap)
+    #             captMap = tableau[captMap[0]][captMap[1]][3]
+    #         chemin.reverse()
+    #         if ([-1,-1]in chemin):
+    #             pass
+    #
+    #         else:
+    #             if(len(chemin)<m):
+    #                 self.BDI = []
+    #                 m = len(chemin)
+    #                 for j in chemin:
+    #                     self.BDI.append(j)
+
     def moveNotInformed(self, captMap):
+        self.BDI = []
         tableau = self.environement.map   #tableau eq grid
         chemin = []
         position = [self.Xasp,self.Yasp]
@@ -64,7 +87,19 @@ class aspirateur:
         chemin.reverse()
         for j in chemin:
             self.BDI.append(j)
-            print(j)
+            #print(j)
+
+    def nearestBDI(self,listCapteur):
+        m = len(listCapteur)
+        self.moveNotInformed(listCapteur[0])
+        l = self.BDI
+        n = len(l)
+        for i in range(1,m):
+            self.moveNotInformed(listCapteur[i])
+            if(len(self.BDI)<n):
+                l = self.BDI
+                n = len(l)
+        return l
 
 
 

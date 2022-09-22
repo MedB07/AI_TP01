@@ -46,9 +46,8 @@ print(env.map)
 env.affichage()
 c = capteur()
 R = c.capteurMap(env)
+print(D.nearestBDI(R))
 
-D.moveNotInformed(R[0])
-print(D.BDI)
 
 
 """
