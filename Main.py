@@ -3,7 +3,6 @@ from tkinter import *
 from Effecteur import *
 from capteur import *
 from ASP import *
-#from ASP import *
 
 c = 100                          # Longueur d'un côté d'une case
 n = 5                           # Nombre de cases par ligne et par colonne
@@ -40,13 +39,22 @@ e.generate_aspirateur(photo_aspi)
 
 env.generate_Dirty(photo_pouss)
 a = env.generate_Bijoux(photo_bijoux)
-dessin.delete(D)
-D.nonInforme()
-print(env.map)
+# dessin.delete(D)
+
+
+# D.nonInforme()
+# print(env.map)
+# env.affichage()
+# c = capteur()
+# R = c.capteurMap(env)
+# print(D.nearestBDI(R))
+
+position_finale = D.position_finale()
+heuristique = D.heuristique(position_finale)
+D.informe(heuristique , position_finale)
+D.chemin(position_finale)
+# D.excecution_informe()
 env.affichage()
-c = capteur()
-R = c.capteurMap(env)
-print(D.nearestBDI(R))
 
 
 
