@@ -2,6 +2,7 @@ from capteur import *
 from Environement import *
 from File import *
 from math import sqrt
+from Effecteur import *
 import time
 
 class aspirateur:
@@ -82,6 +83,25 @@ class aspirateur:
                 l = self.BDI
                 n = len(l)
         return l
+
+    def executionNonInf(self,capteurMap,effecteur):
+        self.nonInforme()
+        # print(env.map)
+        self.environement.affichage()
+
+        print(self.nearestBDI(capteurMap))
+        A = self.nearestBDI(capteurMap)
+        for i in range(len(A)):
+
+            L = self.getPosition()
+            # print(L)
+            effecteur.moveto(A[i][0],A[i][1],L)
+            # print(L)
+            L[0] = A[i][0]
+            L[1] = A[i][1]
+            #print(L)
+            self.environement.affichage()
+            # print(L)
 
 ######## Partie informe####################
 
