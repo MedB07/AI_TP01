@@ -63,23 +63,10 @@ a = env.generate_Bijoux(photo_bijoux)
 
 c = capteur()
 R = c.capteurMap(env)
-D.executionNonInf(R,e)
+#D.executionNonInf(R,e)
+D.executionInf(e)
 
 
-
-# print(D.nearestBDI(R))
-# A = D.nearestBDI(R)
-# for i in range(len(A)):
-#
-#     L = D.getPosition()
-#     # print(L)
-#     e.moveto(A[i][0],A[i][1],L)
-#     # print(L)
-#     L[0] = A[i][0]
-#     L[1] = A[i][1]
-#     #print(L)
-#     env.affichage()
-#     # print(L)
 
 
 

@@ -164,7 +164,7 @@ class aspirateur:
         chemin.reverse()
         for j in chemin:
             self.BDI.append(j)
-        print(self.BDI)
+        return self.BDI
 
 
     def position_finale(self):
@@ -178,6 +178,24 @@ class aspirateur:
                         distance = (self.Yasp-i)**2+(self.Xasp-j)**2
                         pos_cible.append([i,j])
         return pos_cible[len(pos_cible)-1]
+
+    def executionInf(self,effecteur):
+        position_final = self.position_finale()
+        heuristique = self.heuristique(position_final)
+        self.informe(heuristique, position_final)
+        self.environement.affichage()
+        A = self.chemin(position_final)
+        print(A)
+        for i in range(len(A)):
+            L = self.getPosition()
+            # print(L)
+            effecteur.moveto(A[i][0],A[i][1],L)
+            # print(L)
+            L[0] = A[i][0]
+            L[1] = A[i][1]
+            #print(L)
+            self.environement.affichage()
+            # print(L)
 
 
 
