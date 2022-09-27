@@ -56,9 +56,12 @@ def main():
 
     capt = capteur()
     R = capt.capteurMap(env)
-    #D.executionNonInf(R,e)
-    D.executionInf(e)
-    print("Energie:",D.energie)
+    D.executionNonInf(R,e)
+    D.executionNonInf(R,e)
+    D.executionNonInf(R,e)
+    # D.executionInf(e)
+    # D.executionInf(e)
+    # D.executionInf(e)
     #dessin.delete(ALL)
     #fen.mainloop()                  # Boucle d'attente des événements
 

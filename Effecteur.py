@@ -57,12 +57,15 @@ class Effecteur():
     def aspirer(self,line,colum):
         self.E.map[line][colum][1]=0
         self.a.aspirer+=1
+        self.a.energie-=1
         if self.E.map[line][colum][2]==1:
             self.E.map[line][colum][2]=0
             self.a.ramasser+=1
+            self.a.energie-=1
     def ramasser(self,line, colum):
         self.E.map[line][colum][2]=0
         self.a.ramasser+=1
+        self.a.energie-=1
 
 """
 if __name__ == "__main__":

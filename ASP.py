@@ -114,6 +114,7 @@ class aspirateur:
         self.environement.affichage()
         print("nombre de bijoux ramasser",self.ramasser)
         print("nombre de pousierre aspirer",self.aspirer)
+        print("Energie:",self.energie)
 
 ######## Partie informe####################
 
@@ -183,8 +184,8 @@ class aspirateur:
         tableau = self.environement.map
         pos_cible =[]
         distance = 50
-        for i in range(1,5):
-            for j in range(1,5):
+        for i in range(5):
+            for j in range(5):
                 if (tableau[i][j][1]== 1 or tableau[i][j][2] ==1):
                     if ((self.Yasp-i)**2+(self.Xasp-j)**2<distance):
                         distance = (self.Yasp-i)**2+(self.Xasp-j)**2
@@ -216,6 +217,7 @@ class aspirateur:
         self.environement.affichage()
         print("nombre de bijoux ramasser",self.ramasser)
         print("nombre de pousierre aspirer",self.aspirer)
+        print("Energie:",self.energie)
 
 
 
