@@ -11,11 +11,14 @@ class aspirateur:
         self.score = 0
         self.Xasp = 3
         self.Yasp = 3
+        self.energie = 100
         self.environement = environement
         self.File =File
         self.BDI = [] # liste du chemin a faire
         self.positionDirty = []
         self.positionBijoux = []
+        self.ramasser = 0
+        self.aspirer = 0
 
     def getPosition(self):
         position = []
@@ -85,6 +88,7 @@ class aspirateur:
         return l
 
     def executionNonInf(self,capteurMap,effecteur):
+        tableau = self.environement.map
         self.nonInforme()
         # print(env.map)
         self.environement.affichage()
@@ -102,6 +106,14 @@ class aspirateur:
             #print(L)
             self.environement.affichage()
             # print(L)
+        aspi = self.getPosition()
+        if tableau[aspi[0]][aspi[1]][1]== 1:
+            effecteur.aspirer(aspi[0],aspi[1])
+        else : effecteur.ramasser(aspi[0],aspi[1])
+        print("\n\n\n\n")
+        self.environement.affichage()
+        print("nombre de bijoux ramasser",self.ramasser)
+        print("nombre de pousierre aspirer",self.aspirer)
 
 ######## Partie informe####################
 
@@ -180,6 +192,7 @@ class aspirateur:
         return pos_cible[len(pos_cible)-1]
 
     def executionInf(self,effecteur):
+        tableau = self.environement.map
         position_final = self.position_finale()
         heuristique = self.heuristique(position_final)
         self.informe(heuristique, position_final)
@@ -195,7 +208,15 @@ class aspirateur:
             L[1] = A[i][1]
             #print(L)
             self.environement.affichage()
-            # print(L)
+        aspi = self.getPosition()
+        if tableau[aspi[0]][aspi[1]][1]== 1:
+            effecteur.aspirer(aspi[0],aspi[1])
+        else : effecteur.ramasser(aspi[0],aspi[1])
+        print("\n\n\n\n")
+        self.environement.affichage()
+        print("nombre de bijoux ramasser",self.ramasser)
+        print("nombre de pousierre aspirer",self.aspirer)
+
 
 
 

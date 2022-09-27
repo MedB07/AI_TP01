@@ -41,7 +41,7 @@ def main():
     e = Effecteur(env,D,dessin)
     e.generate_aspirateur(photo_aspi)
 
-
+    print("Energie:",D.energie)
 
     env.generate_Dirty(photo_pouss)
     env.generate_Dirty(photo_pouss)
@@ -56,8 +56,9 @@ def main():
 
     capt = capteur()
     R = capt.capteurMap(env)
-    D.executionNonInf(R,e)
-    #D.executionInf(e)
+    #D.executionNonInf(R,e)
+    D.executionInf(e)
+    print("Energie:",D.energie)
     #dessin.delete(ALL)
     #fen.mainloop()                  # Boucle d'attente des événements
 

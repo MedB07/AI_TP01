@@ -19,21 +19,25 @@ class Effecteur():
             self.E.map[self.a.Xasp][self.a.Yasp][0]=0
             self.a.Yasp+=1
             self.E.map[self.a.Xasp][self.a.Yasp][0]=1
+            self.a.energie-=1
     def moveleft(self,):
         if self.a.Yasp!=0:
             self.E.map[self.a.Xasp][self.a.Yasp][0]=0
             self.a.Yasp-=1
             self.E.map[self.a.Xasp][self.a.Yasp][0]=1
+            self.a.energie-=1
     def moveup(self,):
         if self.a.Xasp!=0:
             self.E.map[self.a.Xasp][self.a.Yasp][0]=0
             self.a.Xasp-=1
             self.E.map[self.a.Xasp][self.a.Yasp][0]=1
+            self.a.energie-=1
     def movedown(self,):
         if self.a.Xasp!=4:
             self.E.map[self.a.Xasp][self.a.Yasp][0]=0
             self.a.Xasp+=1
             self.E.map[self.a.Xasp][self.a.Yasp][0]=1
+            self.a.energie-=1
 
     def moveto(self,x1,y1,position):
 
@@ -49,6 +53,16 @@ class Effecteur():
         if(position[1]>y1):
             self.moveleft()
             #position[1] -=1
+
+    def aspirer(self,line,colum):
+        self.E.map[line][colum][1]=0
+        self.a.aspirer+=1
+        if self.E.map[line][colum][2]==1:
+            self.E.map[line][colum][2]=0
+            self.a.ramasser+=1
+    def ramasser(self,line, colum):
+        self.E.map[line][colum][2]=0
+        self.a.ramasser+=1
 
 """
 if __name__ == "__main__":
