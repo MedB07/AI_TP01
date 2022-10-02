@@ -3,6 +3,8 @@ from tkinter import *
 from Effecteur import *
 from capteur import *
 from ASP import *
+import threading as th
+import random
 
 
 
@@ -43,31 +45,40 @@ def main():
 
     print("Energie:",D.energie)
 
+
     env.generate_Dirty(photo_pouss)
     env.generate_Dirty(photo_pouss)
-    a = env.generate_Bijoux(photo_bijoux)
+    env.generate_Bijoux(photo_bijoux)
+    env.generate_Bijoux(photo_bijoux)
+    a = random.randint(1,2)
+    capt = capteur()
+    if a ==1:
+        R = capt.capteurMap(env)
+        D.executionNonInf(R,e)
+    if a ==2:
+        D.executionInf(e)
+    a = random.randint(1,2)
+    time.sleep(2)
     # dessin.delete(D)
 
 
+    while D.energie>=1:
+        a = random.randint(1,2)
+        if a ==1:
+            R = capt.capteurMap(env)
+            D.executionNonInf(R,e)
+        if a ==2:
+            D.executionInf(e)
+        time.sleep(2)
+        b = random.randint(3,4)
+        if b ==3:
+            env.generate_Dirty(photo_pouss)
+        if b==4:
+            env.generate_Dirty(photo_pouss)
+        time.sleep(2)
+        #dessin.delete(ALL)
+    print("\n\n\nEnergie is low")
 
-
-
-
-
-    capt = capteur()
-    R = capt.capteurMap(env)
-    D.executionNonInf(R,e)
-    # R = capt.capteurMap(env)
-    # D.executionNonInf(R,e)
-    # R = capt.capteurMap(env)
-    # D.executionNonInf(R,e)
-    # env.generate_Dirty(photo_pouss)
-    # R = capt.capteurMap(env)
-    # D.executionNonInf(R,e)
-    D.executionInf(e)
-    # D.executionInf(e)
-    # D.executionInf(e)
-    #dessin.delete(ALL)
     #fen.mainloop()                  # Boucle d'attente des événements
 
 

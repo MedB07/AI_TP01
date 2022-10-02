@@ -93,6 +93,7 @@ class aspirateur:
         tableau = self.environement.map
         self.nonInforme()
         self.environement.affichage()
+        time.sleep(2)
         A = self.nearestBDI(capteurMap)
 
         for i in range(len(A)):
@@ -105,6 +106,7 @@ class aspirateur:
             L[1] = A[i][1]
             #print(L)
             self.environement.affichage()
+            time.sleep(2)
             # print(L)
         aspi = self.getPosition()
         if self.environement.map[aspi[0]][aspi[1]][1]== 1:
@@ -112,6 +114,7 @@ class aspirateur:
         else : effecteur.ramasser(aspi[0],aspi[1])
         print("\n\n\n\n")
         self.environement.affichage()
+        time.sleep(2)
         print("nombre de bijoux ramasser",self.ramasser)
         print("nombre de pousierre aspirer",self.aspirer)
         print("Energie:",self.energie)
@@ -198,6 +201,7 @@ class aspirateur:
         heuristique = self.heuristique(position_final)
         self.informe(heuristique, position_final)
         self.environement.affichage()
+        time.sleep(2)
         A = self.chemin(position_final)
         print(A)
         for i in range(len(A)):
@@ -209,6 +213,7 @@ class aspirateur:
             L[1] = A[i][1]
             #print(L)
             self.environement.affichage()
+            time.sleep(2)
         aspi = self.getPosition()
         if tableau[aspi[0]][aspi[1]][1]== 1:
             effecteur.aspirer(aspi[0],aspi[1])
