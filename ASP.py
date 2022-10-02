@@ -27,6 +27,7 @@ class aspirateur:
 
 ######## Partie non informe####################
     def nonInforme(self):
+        self.File.file =[]
         tableau = self.environement.map   #tableau eq grid
         position = [self.Xasp,self.Yasp]
         # il faut remettre les parents des cases à leurs états initiaux ([-1,-1])
@@ -76,8 +77,9 @@ class aspirateur:
             #print(j)
 
     def nearestBDI(self,listCapteur):
-        m = len(listCapteur)
+
         self.moveNotInformed(listCapteur[0])
+        m = len(listCapteur)
         l = self.BDI
         n = len(l)
         for i in range(1,m):
@@ -90,11 +92,9 @@ class aspirateur:
     def executionNonInf(self,capteurMap,effecteur):
         tableau = self.environement.map
         self.nonInforme()
-        # print(env.map)
         self.environement.affichage()
-
-        print(self.nearestBDI(capteurMap))
         A = self.nearestBDI(capteurMap)
+
         for i in range(len(A)):
 
             L = self.getPosition()
@@ -107,7 +107,7 @@ class aspirateur:
             self.environement.affichage()
             # print(L)
         aspi = self.getPosition()
-        if tableau[aspi[0]][aspi[1]][1]== 1:
+        if self.environement.map[aspi[0]][aspi[1]][1]== 1:
             effecteur.aspirer(aspi[0],aspi[1])
         else : effecteur.ramasser(aspi[0],aspi[1])
         print("\n\n\n\n")
