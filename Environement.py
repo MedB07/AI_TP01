@@ -48,12 +48,3 @@ class environement:
 
 
 
-# if __name__ == "__main__":
-#     e = environement()
-#     e.generate_Bijoux()
-#     e.generate_Dirty()
-#     e.generate_Bijoux()
-#     e.generate_Dirty()
-#     e.generate_Bijoux()
-#     e.generate_Dirty()
-#     e.affichage()

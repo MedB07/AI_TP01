@@ -1,5 +1,4 @@
 from tkinter import *
-#from Environement import *
 from Effecteur import *
 from capteur import *
 from ASP import *
@@ -35,6 +34,7 @@ def pictures():
     return pictures
 
 def main():
+    choix = int(input("choisir algorithme\n mettez 1 pour non informe et 2 pour informe"))
     fen,dessin,photo_pouss,photo_bijoux,photo_aspi = pictures()
 
     env = environement(dessin)
@@ -52,22 +52,14 @@ def main():
     env.generate_Bijoux(photo_bijoux)
     a = random.randint(1,2)
     capt = capteur()
-    if a ==1:
-        R = capt.capteurMap(env)
-        D.executionNonInf(R,e)
-    if a ==2:
-        D.executionInf(e)
-    a = random.randint(1,2)
-    time.sleep(2)
-    # dessin.delete(D)
+
 
 
     while D.energie>=1:
-        a = random.randint(1,2)
-        if a ==1:
+        if choix ==1:
             R = capt.capteurMap(env)
             D.executionNonInf(R,e)
-        if a ==2:
+        if choix ==2:
             D.executionInf(e)
         time.sleep(2)
         b = random.randint(3,4)
@@ -79,10 +71,15 @@ def main():
         #dessin.delete(ALL)
     print("\n\n\nEnergie is low")
 
-    #fen.mainloop()                  # Boucle d'attente des événements
+    fen.mainloop()                  # Boucle d'attente des événements
 
 
 main()
+
+
+
+#### Interface à finir pour plus de beaute ##
+
 
 
 
